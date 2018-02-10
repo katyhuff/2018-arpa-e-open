@@ -1,0 +1,59 @@
+
+%=======================================================
+% FIGURE BEGINS
+%=========================================================
+
+
+\newlength{\figwidth}
+\setlength{\figwidth}{3cm}
+
+\begin{figure}
+    \centering
+    \scalebox{1.0}{
+                \begin{tikzpicture}[>={Latex[width=3mm,length=3mm]},
+                                node distance=\figwidth,
+                                on grid,
+                                align=center,
+                                bend angle=60,
+                                auto]
+        % Place nodes
+        \node [const] (openmc) {\textbf{OpenMC}};
+        \node [data, above=\figwidth of openmc] (geom) {Geometry\\Definitions};
+        \node [data, right=\figwidth of geom] (mat) {Material\\Definitions};
+        \node [data, left=\figwidth of geom] (xs) {Cross Section\\Data};
+        \node [data, right=\figwidth of mat] (tallyspecs) {Tally\\Definitions};
+        \node [data, right=\figwidth of tallyspecs] (nparticles) {N\\(particles)};
+        \node [cloud, below=\figwidth of openmc] (tally) {Other\\Tallies};
+        \node [cloud, left=\figwidth of tally] (flux) {Fluxes};
+        \node [cloud, right=\figwidth of tally] (hist) {Particle\\Histories};
+        \node [block, below=\figwidth of tally] (imp) {Importance};
+        \node [block, right=2*\figwidth of openmc] (ww) {\texttt{Weight Windows}};
+        \node [data, right=2*\figwidth of imp] (params) {ML Model\\Parameters};
+        \node [block, above=\figwidth of params] (model) {\texttt{ML model}};
+        \begin{scope}[on background layer]
+        \draw[->, ultra thick] let \p1=($(openmc)-(ww)$) in (ww) -- +(0,\y1)-- +(openmc);
+        \draw[->, ultra thick] (flux) -- (imp);
+        \draw[->, ultra thick] (tally) -- (imp);
+        \draw[->, ultra thick] (hist) -- (imp);
+        \draw[->, ultra thick] (geom) -- (openmc);
+        \draw[->, ultra thick] (xs) -- (openmc);
+        \draw[->, ultra thick] (mat) -- (openmc);
+        \draw[->, ultra thick] (tallyspecs) -- (openmc);
+        \draw[->, ultra thick] (nparticles) -- (openmc);
+        \draw[->, ultra thick] (openmc) -- (tally);
+        \draw[->, ultra thick] (openmc) -- (hist);
+        \draw[->, ultra thick] (openmc) -- (flux);
+        \draw[->, ultra thick] (imp) -- (model);
+        \draw[->, ultra thick] (params) -- (model);
+        \draw[dashed,->, ultra thick] (model) to [bend right] node [above right] {} (tallyspecs);
+        \draw[dashed,->, ultra thick] (model) to [bend right] node [above 
+        right] {} (nparticles);
+        \draw[->, ultra thick] (model) -- (ww);
+        \path[->] (openmc) edge [ultra thick,out=330,in=0,looseness=10] 
+        (openmc) node[below right=0.1\figwidth and 0.8\figwidth] 
+        {\textbf{simulate}\\\textbf{N particles}};
+        \end{scope}
+        \end{tikzpicture}}
+    \caption{Basic methodology for machine learning importance mapping.}
+\end{figure}
+
