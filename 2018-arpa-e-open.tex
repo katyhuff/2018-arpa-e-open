@@ -10,6 +10,45 @@
 \usepackage{longtable}
 \usepackage{amsfonts}
 \usepackage{amsmath}
+
+
+%-----------------------------------------------------------
+
+\usepackage{graphicx}  % Required for including images
+
+\usepackage{tabularx}
+\newcolumntype{b}{X}
+\newcolumntype{s}{>{\hsize=.5\hsize}X}
+\newcolumntype{m}{>{\hsize=.75\hsize}X}
+\newcolumntype{z}{>{\hsize=.65\hsize}X}
+
+\usepackage{booktabs} % Top and bottom rules for tables
+\usepackage{xspace}
+\usepackage{tikz}
+\usepackage{chronology}
+\usetikzlibrary{arrows.meta,backgrounds}
+
+\usetikzlibrary{positioning, arrows, decorations, shapes, calc}
+% Define block styles
+\tikzstyle{decision} = [diamond, draw, fill=blue!20,
+text width=4.5em, text badly centered, node distance=3cm, inner sep=0pt]
+
+\tikzstyle{const} = [rectangle, draw, text centered, fill=orange!20]
+\tikzstyle{data} = [rectangle, draw, text centered, fill=green!20]
+
+\tikzstyle{block} = [rectangle, draw, text centered, fill=blue!20]
+\tikzstyle{line} = [draw, -latex']
+\tikzstyle{cloud} = [draw, ellipse,fill=red!20, node distance=6em,
+minimum height=2em]
+
+
+\usetikzlibrary{shapes.multipart}
+\usetikzlibrary{positioning}
+
+
+%-----------------------------------------------------------
+
+
 \usepackage[hidelinks]{hyperref}
 \def\thesection       {\arabic{section}}
 \def\thesubsection     {\thesection.\alph{subsection}}
@@ -84,6 +123,8 @@ notebooks.
 \section{Proposed Work}
 %    Describe the final deliverable(s) for the project and the overall
 %             technical approach used to achieve project objectives.
+
+\input{model-fig}
 %    Discuss alternative approaches considered, if any, and why the proposed
 %             approach is most appropriate for the project objectives.
 %    Describe the background, theory, simulation, modeling, experimental data,
