@@ -31,7 +31,7 @@ algorithm would choose these parameters based on a set number of MC cycles.
 
 * to use a previous MC iteration to set the importances in the next calculation
   we need to tally in MC
-  * how do we want to tally? Do we want to bypass it altogether?
+  * how do we want to tally? Do we want to bypass tallying altogether?
     * If we want to bypass it altogether then we would have to modify OpenMC. 
       * WW map would be defined in dimensions based on whatever algorithm we
         get based on particle tracking
