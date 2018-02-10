@@ -5,7 +5,7 @@
 
 
 \newlength{\figwidth}
-\setlength{\figwidth}{3cm}
+\setlength{\figwidth}{2.75cm}
 
 \begin{figure}
     \centering
@@ -20,9 +20,10 @@
         \node [const] (openmc) {\textbf{OpenMC}};
         \node [data, above=\figwidth of openmc] (geom) {Geometry\\Definitions};
         \node [data, right=\figwidth of geom] (mat) {Material\\Definitions};
-        \node [data, left=\figwidth of geom] (xs) {Cross Section\\Data};
+        \node [data, left=\figwidth of geom] (xs) {Cross\\Section Data};
         \node [data, right=\figwidth of mat] (tallyspecs) {Tally\\Definitions};
         \node [data, right=\figwidth of tallyspecs] (nparticles) {N\\(particles)};
+        \node [data, right=\figwidth of nparticles] (srcdist) {Source\\Distribution};
         \node [cloud, below=\figwidth of openmc] (tally) {Other\\Tallies};
         \node [cloud, left=\figwidth of tally] (flux) {Fluxes};
         \node [cloud, right=\figwidth of tally] (hist) {Particle\\Histories};
@@ -40,14 +41,15 @@
         \draw[->, ultra thick] (mat) -- (openmc);
         \draw[->, ultra thick] (tallyspecs) -- (openmc);
         \draw[->, ultra thick] (nparticles) -- (openmc);
+        \draw[->, ultra thick] (srcdist) -- (openmc);
         \draw[->, ultra thick] (openmc) -- (tally);
         \draw[->, ultra thick] (openmc) -- (hist);
         \draw[->, ultra thick] (openmc) -- (flux);
         \draw[->, ultra thick] (imp) -- (model);
         \draw[->, ultra thick] (params) -- (model);
         \draw[dashed,->, ultra thick] (model) to [bend right] node [above right] {} (tallyspecs);
-        \draw[dashed,->, ultra thick] (model) to [bend right] node [above 
-        right] {} (nparticles);
+        \draw[dashed,->, ultra thick] (model) to [bend right] node [above right] {} (nparticles);
+        \draw[dashed,->, ultra thick] (model) to [bend right] node [above right] {} (srcdist);
         \draw[->, ultra thick] (model) -- (ww);
         \path[->] (openmc) edge [ultra thick,out=330,in=0,looseness=10] 
         (openmc) node[below right=0.1\figwidth and 0.8\figwidth] 
