@@ -54,31 +54,47 @@
 
 
 This work will implement a proof-of-concept python package demonstrating
-acceleration of monte carlo methods (in particular, monte carlo for neutral
-particle transport) using machine learning techniques. 
+acceleration of Monte Carlo methods (in particular, Monte Carlo for neutral
+particle transport) using machine learning techniques.
 Next, this work will implement a few potential acceleration methods inspired by machine
-learning and optimization techniques in the literature. 
+learning and optimization techniques in the literature.
 Finally, these acceleration methods will be tested and compared to one another for simple
 problems. This work will emphasize implementation of best practices in
 scientific computing, including integrating documentation, implementing unit
 tests, investigating scalability, and developing demonstration jupyter
-notebooks. 
+notebooks.
 
 \section{Innovation and Impact}
-%    Clearly identify the problem to be solved with the proposed technology 
+%    Clearly identify the problem to be solved with the proposed technology
 %              concept.
-%    Describe how the proposed effort represents an innovative and potentially 
+%    Describe how the proposed effort represents an innovative and potentially
 %              transformational solution to the technical challenges posed by the FOA.
-%    Explain the concept's potential to be disruptive compared to existing or 
-%              emerging technologies. 
-%    Describe how the concept will have a positive impact on at least one of 
+Hybrid methods to reduce variance in neutral particle transport in nuclear
+applications tend to be application-specific. In particular, methods generally
+have been developed for fixed-source or eigenvalue calculations, but not both.
+This method can be used on solution types, offering the potential for
+a large application space and a broad applicability. Further, many hybrid
+methods use a deterministic solution of the inverse solution to estimate problem
+importance\cite{wagner_automated_1998, wagner_automated_2009,
+haghighat_monte_2003, zhang_adjoint-based_2011, hoogenboom_optimum_1979} . Though methods exist that automate importance map
+generation\cite{hendricks_mcnp_1985, burn_optimizing_2014,
+  van_wijk_easy_2011, wagner_automated_1998, wagner_automated_2009,
+haghighat_monte_2003, zhang_adjoint-based_2011, hoogenboom_optimum_1979},
+they still require user knowledge to choose deterministic
+parameter choices (space- and energy- mesh size, quadrature type and order,
+etc.). Selecting these is a non-trivial task and dramatically affect performance
+across hybrid methods. This method will automate the importance map selection
+and, additionally, require exclusively Monte Carlo to generate it. This is more
+feasible from the user perspective and by reducing the Monte Carlo runtime it
+will be more energy efficient.
+%    Explain the concept's potential to be disruptive compared to existing or
+%              emerging technologies.
+%    Describe how the concept will have a positive impact on at least one of
 %              the ARPA-E mission areas in Section I.A of the FOA.
-%    To the extent possible, provide quantitative metrics in a table that 
-%              compares the proposed technology concept to current and emerging 
-%              technologies and to the appropriate Technology Category in Section I.D of 
+%    To the extent possible, provide quantitative metrics in a table that
+%              compares the proposed technology concept to current and emerging
+%              technologies and to the appropriate Technology Category in Section I.D of
 %              the FOA.
-
-
 
 
 \section{Proposed Work}
@@ -93,9 +109,32 @@ notebooks.
 %    Describe why the proposed effort is a significant technical challenge and
 %             the key technical risks to the project.  Does the approach require one or more
 %             entirely new technical developments to succeed?  How will technical risk be
-%             mitigated? 
+%             mitigated?
+A number of attempts have been made to develop hybrid methods with broad
+applicability across phase-space, such as the CADIS
+methodology\cite{haghighat_monte_2003}. Many of the
+existing methods that are successful use a deterministic transport
+calculation on a coarse mesh solving the inverse problem to obtain an importance
+estimate\cite{zhang_global_2014, zhang_adjoint-based_2011, haghighat_monte_2003,
+hendricks_mcnp_1985}. Though this method will use machine learning in a novel space to
+update Monte Carlo, the quality of the importance estimate will still be limited
+by the quality of the results from the initial Monte Carlo simulation. The
+problem physics (a very effective shield, a highly absorbing medium, etc.) will
+influence particles' ability to penetrate through the problem phase-space, and
+this may result in very noisy importance estimates in certain regions of the
+problem\cite{van_wijk_easy_2011}. Further, this noise may exacerbate overfitting phenomena observed in
+Machine Learning techniques. Because this method has a large phase-space
+applicability, it may require a substantial computational burden to investigate
+the method performance in tally areas (space, space-energy, space-energy-angle).
+
+Using Monte Carlo for full-core simulation of nuclear reactors is
+computationally expensive\cite{martin_challenges_2012}. This method may reduce
+the variance in the solution we seek but may not overcome the computational
+limitations that exist for full-core reactor simulation. We plan to
+characterize the method on a diverse set of application problems, ranging from
+geometrically simple to complex.
 %    Identify techno-economic challenges to be overcome for the proposed
-%             technology to be commercially relevant. 
+%             technology to be commercially relevant.
 %    Estimated federal funds requested; total project cost including cost
 %             sharing.
 
@@ -103,14 +142,14 @@ notebooks.
 %    Indicate the roles and responsibilities of the organizations and key
 %             personnel that comprise the Project Team.
 %    Provide the name, position, and institution of each key team member and
-%             describe in 1-2 sentences the skills and experience that he/she brings 
+%             describe in 1-2 sentences the skills and experience that he/she brings
 %             to the team.
 %    Identify key capabilities provided by the organizations comprising the
 %             Project Team and how those key capabilities will be used in the proposed effort
 
 \nocite{*}
 \pagebreak
-\bibliographystyle{ieeetr}
+\bibliographystyle{plain}
 \bibliography{2018-arpa-e-open}
 \end{document}
 
