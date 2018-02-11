@@ -10,6 +10,7 @@
 \usepackage{longtable}
 \usepackage{amsfonts}
 \usepackage{amsmath}
+\usepackage{paralist}
 
 
 %-----------------------------------------------------------
@@ -178,9 +179,17 @@ geometrically simple to complex. Because this method can be applied to both
 fixed-source and criticality (eigenvalue) calculations, the applications
 problems will also cover both problem types. Among the problems that will be
 simulated with this method are:
-\begin{itemize}
-  \item
-\end{itemize}
+\begin{compactitem}
+  \item A molten salt reactor \cite{robertson_msre_1965}
+  \item A pebble bed, fluorite salt-cooled, high temperature
+    reactor \cite{andreades_design_2016}
+  \item A molten salt, single-fluid, breeder
+    reactor\cite{robertson_conceptual_1971}.
+\end{compactitem}
+Each of these reactor types are computationally difficult for unbiased Monte
+Carlo to simulate alone. A method to more effectively transport particles will
+aid in future design iterations, allowing for faster design turnaround and lower
+computational energy use in the design phase.
 %    Identify techno-economic challenges to be overcome for the proposed
 %             technology to be commercially relevant.
 %    Estimated federal funds requested; total project cost including cost
