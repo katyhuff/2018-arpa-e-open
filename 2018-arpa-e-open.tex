@@ -10,6 +10,7 @@
 \usepackage{longtable}
 \usepackage{amsfonts}
 \usepackage{amsmath}
+\usepackage{paralist}
 
 
 %-----------------------------------------------------------
@@ -98,7 +99,7 @@ particle transport) using machine learning techniques.
 Next, this work will implement a few potential acceleration methods inspired by machine
 learning and optimization techniques in the literature.
 Finally, these acceleration methods will be tested and compared to one another for simple
-problems relevant to advanced nuclear reactor safety and design. 
+problems relevant to advanced nuclear reactor safety and design.
 This work will emphasize implementation of best practices in
 scientific computing, including integrating documentation, implementing unit
 tests, investigating scalability, and developing demonstration jupyter
@@ -125,7 +126,7 @@ parameter choices (space- and energy- mesh size, quadrature type and order,
 etc.). Selecting these is a non-trivial task and dramatically affects performance
 across hybrid methods. This work will automate the importance map parameter selection
 and, additionally, require exclusively Monte Carlo to generate it. This is more
-feasible from the user perspective and improves energy efficiency by reducing 
+feasible from the user perspective and improves energy efficiency by reducing
 the Monte Carlo runtime.
 %    Explain the concept's potential to be disruptive compared to existing or
 %              emerging technologies.
@@ -174,12 +175,26 @@ computationally expensive\cite{martin_challenges_2012}. This method may reduce
 the variance in the solution we seek but may not overcome the computational
 limitations that exist for full-core reactor simulation. We plan to
 characterize the method on a diverse set of application problems, ranging from
-geometrically simple to complex.
+geometrically simple to complex. Because this method can be applied to both
+fixed-source and criticality (eigenvalue) calculations, the applications
+problems will also cover both problem types. Among the problems that will be
+simulated with this method are:
+\begin{compactitem}
+  \item A molten salt reactor \cite{robertson_msre_1965}
+  \item A pebble bed, fluorite salt-cooled, high temperature
+    reactor \cite{andreades_design_2016}
+  \item A molten salt, single-fluid, breeder
+    reactor\cite{robertson_conceptual_1971}.
+\end{compactitem}
+Each of these reactor types are computationally difficult for unbiased Monte
+Carlo to simulate alone. A method to more effectively transport particles will
+aid in future design iterations, allowing for faster design turnaround and lower
+computational energy use in the design phase.
 %    Identify techno-economic challenges to be overcome for the proposed
 %             technology to be commercially relevant.
 %    Estimated federal funds requested; total project cost including cost
 %             sharing.
-\paragraph{Budget} The project has a \$\textbf{XXXX} federal budget over a 24 month duration. Fuding at UIUC will support 3 graduate students, one postdoc, 8 weeks of faculty summer salary, and other expenses such as conference travel and publication page charges. 
+\paragraph{Budget} The project has a \$\textbf{XXXX} federal budget over a 24 month duration. Fuding at UIUC will support 3 graduate students, one postdoc, 8 weeks of faculty summer salary, and other expenses such as conference travel and publication page charges.
 
 
 \section{Team Organization and Capabilities}
@@ -197,14 +212,21 @@ software such as the Cyclus simulator, PyNE, and Moltres, a MOOSE application
 for MSR physics. She will provide insight on scientific computing, the nuclear
 fuel cycle, the Moltres tool, and object-oriented multiphysics modeling in
 general.
+
+\paragraph{Madicken Munk} is a Postdoctoral Research Scholar at the University
+of Illinois at Urbana-Champaign (UIUC) in the National Center for Supercomputing
+Applications (NCSA). She will provide expertise in computational methods
+development, Monte Carlo radiation transport, and hybrid neutral-particle
+transport. Madicken will serve as a reference and mentor on radiation transport
+methods and will help oversee the method development.
 %    Identify key capabilities provided by the organizations comprising the
 %             Project Team and how those key capabilities will be used in the proposed effort
 
 \paragraph{Key Capabilities}
 
 UIUC is a leader in world class computing resources that will be available for compute-
-intensive aspects of this work. In particular, the Blue Waters supercomputer is 
-one of the most powerful supercomputers in the world, and is the fastest 
+intensive aspects of this work. In particular, the Blue Waters supercomputer is
+one of the most powerful supercomputers in the world, and is the fastest
 supercomputer on a university campus.
 \pagebreak
 \bibliographystyle{plain}
