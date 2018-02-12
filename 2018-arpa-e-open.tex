@@ -165,31 +165,38 @@ by the quality of the results from the initial Monte Carlo simulation. The
 problem physics (a very effective shield, a highly absorbing medium, etc.) will
 influence particles' ability to penetrate through the problem phase-space, and
 this may result in very noisy importance estimates in certain regions of the
-problem\cite{van_wijk_easy_2011}. Further, this noise may exacerbate overfitting phenomena observed in
+problems\cite{van_wijk_easy_2011}. Further, this noise may exacerbate overfitting phenomena observed in
 Machine Learning techniques. Because this method has a large phase-space
 applicability, it may require a substantial computational burden to investigate
-the method performance in tally areas (space, space-energy, space-energy-angle).
+the method performance in different tally types (space, space-energy,
+space-energy-angle).
 
 Using Monte Carlo for full-core simulation of nuclear reactors is
-computationally expensive\cite{martin_challenges_2012}. This method may reduce
+computationally expensive\cite{martin_challenges_2012}. However, Monte Carlo is
+attractive as a method because it is inherently continuous in space, energy, and
+angle, potentially allowing for higher fidelity results in tally regions.
+This method may reduce
 the variance in the solution we seek but may not overcome the computational
-limitations that exist for full-core reactor simulation. We plan to
+limitations that exist for full-core reactor simulation with Monte Carlo. We plan to
 characterize the method on a diverse set of application problems, ranging from
-geometrically simple to complex. Because this method can be applied to both
-fixed-source and criticality (eigenvalue) calculations, the applications
-problems will also cover both problem types. Among the problems that will be
+geometrically simple to complex and including either fixed-source or criticality
+(eigenvalue) calculations.
+
+A method that reduces the runtime for full-core reactor core calculations
+presents the opportunity to offer the most energy savings in advanced reactor
+simulation. Working designs for future reactors have numerous design iterations,
+each requiring multiple Monte Carlo runs to simulate the evolution of the
+reactor over a lifetime. Among the problems that will be
 simulated with this method are:
 \begin{compactitem}
   \item A molten salt reactor \cite{robertson_msre_1965}
   \item A pebble bed, fluorite salt-cooled, high temperature
-    reactor \cite{andreades_design_2016}
+    reactor \cite{andreades_design_2016}, and
   \item A molten salt, single-fluid, breeder
     reactor\cite{robertson_conceptual_1971}.
 \end{compactitem}
-Each of these reactor types are computationally difficult for unbiased Monte
-Carlo to simulate alone. A method to more effectively transport particles will
-aid in future design iterations, allowing for faster design turnaround and lower
-computational energy use in the design phase.
+In addition to energy savings, faster runtime will also allow for faster design
+turnaround for different reactor point designs.
 %    Identify techno-economic challenges to be overcome for the proposed
 %             technology to be commercially relevant.
 %    Estimated federal funds requested; total project cost including cost
