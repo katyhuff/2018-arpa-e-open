@@ -11,7 +11,8 @@
 \usepackage{amsfonts}
 \usepackage{amsmath}
 \usepackage{paralist}
-
+\usepackage{lastpage}
+\usepackage[numbers,sort,compress]{natbib}
 
 %-----------------------------------------------------------
 
@@ -46,22 +47,28 @@ minimum height=2em]
 \usetikzlibrary{shapes.multipart}
 \usetikzlibrary{positioning}
 
-
 %-----------------------------------------------------------
 
 
 \usepackage[hidelinks]{hyperref}
-\def\thesection       {\arabic{section}}
+\def\thesection       {\arabic{section}.}
 \def\thesubsection     {\thesection.\alph{subsection}}
 
-\author{Kathryn Huff, Madicken Munk\\
-        \href{mailto:kdhuff@illinois.edu}{\texttt{kdhuff@illinois.edu}},
-        \href{mailto:mmunk2@illinois.edu}{\texttt{mmunk2@illinois.edu}}
-}
+\usepackage{titlesec}
+
+\titleformat{\section}
+  {\normalfont\fontsize{12}{14}\bfseries}{\thesection}{1em}{}
+
+
+%-----------------------------------------------------------
+% Bib Entry Separation
+\setlength{\bibsep}{0pt plus 0.3ex}
+%-----------------------------------------------------------
+
+%\author{{\fourteenpt University of Illinois (Urbana, IL); Kathryn Huff}}
 
 \date{}
-\title{{\fourteenpt Machine Learning Acceleration of Monte Carlo Neutron 
-Transport}}
+%\title{{\fourteenpt Machine Learning Acceleration of Monte Carlo Neutron Transport}}
 
 
 %
@@ -73,22 +80,28 @@ Transport}}
 \usepackage{fancyhdr}
 \pagestyle{fancy}
 \fancyhf{}
-\rhead{\#1858-3501\\
-       U. Illinois\\
-       Huff}
-\cfoot{\thepage}
+
+\rhead{U. Illinois, Huff\\
+       \#1858-3501}
+\lhead{DE-FOA-0001858\\
+Concept Paper}
+\cfoot{
+Contains Confidential, Proprietary, or Privileged Information\\ 
+    Exempt from Public Disclosure\\ 
+    Page~\thepage\ of~\pageref{LastPage}}
 \newcommand*\fourteenpt{\fontsize{14}{15.5}\selectfont}
 
 \begin{document}
-\maketitle
-
+%\maketitle
 \thispagestyle{fancy}
 \begin{center}
-\begin{description}
-    \item[Technical Category] 4D, Nuclear Power Generation And Materials
-    \item[Duration] 36 Months
-    \item[Amount] \$700,000
-\end{description}
+{\fourteenpt Machine Learning Acceleration of Monte Carlo Neutron Transport}\\
+\vspace{3mm}
+University of Illinois (Urbana, IL); Kathryn Huff\\
+\vspace{3mm}
+4D: Power Generation and Energy Production: Nuclear Power Generation And Materials\\
+Proposed Funds: Fed: \$700,000\/ Cost Share: \$35,000\/ Total: \$735,000\\
+Project Duration: 36 Months\\
 \end{center}
 
 \section{Concept Summary}
@@ -136,6 +149,24 @@ the Monte Carlo runtime.
 %    Describe how the concept will have a positive impact on at least one of
 %              the ARPA-E mission areas in Section I.A of the FOA.
 
+\begin{table}
+  \centering
+    \begin{tabular}{  l  c  }
+     \hline
+     \textbf{Metric} & \textbf{Time Saved}\\ \hline
+     Improvement over Monte Carlo Runtime & $\ge50\%$  \\
+     Improvement over Hybrid Method Runtime & $20\%-90\%$ \\
+     Improvement over Hybrid Method User Time & $\ge10\%$ \\
+     \hline
+    \end{tabular}
+    \caption{The fractional time improvements that we expect  to observe with Machine 
+            Learning Monte Carlo are significant when compared to either 
+            traditional Monte Carlo or Hybrid Methods (deterministic-stochastic 
+            acceleration). By automating hybrid method parameter choices setup, 
+    user time is also saved.}
+   \label{tab:improve}
+\end{table}
+
 By developing a method that uses unsupervised machine learning to obtain an
 importance map for the desired problem, we are improving existing computational
 methods for reactor analysis. This work has the potential to
@@ -150,27 +181,6 @@ be observed with this method and are summarized in Table \ref{tab:improve}.
 %              technologies and to the appropriate Technology Category in Section I.D of
 %              the FOA.
 
-\begin{table}
-  \centering
-    \begin{tabular}{ | l | c | }
-     \hline
-     Metric & Execution Time \\ \hline
-     Monte Carlo Runtime & 50\%  \\
-     Hybrid Method Runtime & 20\%-90\% \\
-     User Time & 10\% \\
-     \hline
-    \end{tabular}
-    \caption{Table summarizing realms of improvement and the fractional
-      execution times that may be observed with Machine Learning Monte Carlo.
-      Here the execution time is calculated by taking
-    the ratio of the proposed Machine Learning Monte Carlo method and the
-    industry standard method. Monte Carlo runtime compares the Machine
-  Learning Monte Carlo to standard unbiased Monte Carlo. Hybrid runtime
-  compares the time of execution of the Machine Learning Monte Carlo to a
-  standard deterministic-Monte Carlo run. User time compares a user's time spent
-adjusting deterministic parameter choices and setting up the hybrid run input.}
-   \label{tab:improve}
-\end{table}
 
 
 \section{Proposed Work}
@@ -280,8 +290,7 @@ UIUC is a leader in world class computing resources that will be available for c
 intensive aspects of this work. In particular, the Blue Waters supercomputer is
 one of the most powerful supercomputers in the world, and is the fastest
 supercomputer on a university campus.
-\pagebreak
-\bibliographystyle{plain}
+\bibliographystyle{unsrtnat}
 \bibliography{2018-arpa-e-open}
 \end{document}
 
