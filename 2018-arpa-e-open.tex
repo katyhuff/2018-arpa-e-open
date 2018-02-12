@@ -13,6 +13,7 @@
 \usepackage{paralist}
 \usepackage{lastpage}
 \usepackage[numbers,sort,compress]{natbib}
+\usepackage{placeins}
 
 %-----------------------------------------------------------
 
@@ -58,6 +59,9 @@ minimum height=2em]
 
 \titleformat{\section}
   {\normalfont\fontsize{12}{14}\bfseries}{\thesection}{1em}{}
+\titlespacing{\section}{0pt}{\parskip}{-\parskip}
+\titlespacing{\subsection}{0pt}{\parskip}{-\parskip}
+\titlespacing{\subsubsection}{0pt}{\parskip}{-\parskip}
 
 
 %-----------------------------------------------------------
@@ -148,6 +152,7 @@ the Monte Carlo runtime.
 %              emerging technologies.
 %    Describe how the concept will have a positive impact on at least one of
 %              the ARPA-E mission areas in Section I.A of the FOA.
+\FloatBarrier
 
 \begin{table}
   \centering
